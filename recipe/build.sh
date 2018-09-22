@@ -13,6 +13,7 @@ ln -s "$SRC_DIR" "$GOPATH/src/github.com/jesseduffield/lazygit"
 cd "$GOPATH/src/github.com/jesseduffield/lazygit"
 
 # build the project
+export CGO_ENABLED=0  # disable CGO, as there are no C libs to load
 go get -v
 go build
 
