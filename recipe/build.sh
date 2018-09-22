@@ -14,8 +14,10 @@ cd "$GOPATH/src/github.com/jesseduffield/lazygit"
 
 # build the project
 export CGO_ENABLED=0  # disable CGO, as there are no C libs to load
-go get -v
-go build
+LDFLAGS="-s -w"       # omit the symbol table / debug information and
+                      # DWARF symbol table.
+go get -v -ldflags "${LDFLAGS}"
+go build  -ldflags "${LDFLAGS}"
 
 # install the binary
 mkdir -p "$PREFIX/bin"
