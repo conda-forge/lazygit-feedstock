@@ -9,6 +9,7 @@ mklink /D "%GOPATH%\src\github.com\jesseduffield\lazygit" "%SRC_DIR%" || goto :e
 cd "%GOPATH%\src\github.com\jesseduffield\lazygit"
 
 :: build the project
+set "CGO_ENABLED=0"  :: disable CGO, as there are no C libs to load
 go get -v || goto :error
 go build || goto :error
 
