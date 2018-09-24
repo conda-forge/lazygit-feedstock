@@ -1,6 +1,6 @@
 {% set name = "lazygit" %}
-{% set version = "0.3.0" %}
-{% set sha256 = "8a9720e3b0bbcad214db0dc5595f91210552ffedf0e95dba6c578d3bfb5e58d1" %}
+{% set version = "0.3.1" %}
+{% set sha256 = "2a67a369f5c12118e747304f98a0dab3f7f747d7602b83c6022f63987e3747da" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   binary_relocation: False
   detect_binary_files_with_prefix: False
 
