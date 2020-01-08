@@ -1,6 +1,6 @@
 {% set name = "lazygit" %}
-{% set version = "0.11.3" %}
-{% set sha256 = "b3c503de6b34fd4284fd70655e7f42feafc07f090e7f7cc00db261f56c583c46" %}
+{% set version = "0.12.3" %}
+{% set sha256 = "0338c29be43ab1393ed9dfcda20a93c44f40753c26c8e516b6ed7f79f7275ec4" %}
 
 package:
   name: {{ name|lower }}
