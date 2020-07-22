@@ -5,7 +5,7 @@ Home: https://github.com/jesseduffield/lazygit
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A simple terminal UI for git commands, written in Go with the gocui library.
 
