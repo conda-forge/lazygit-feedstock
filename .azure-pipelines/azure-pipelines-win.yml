@@ -62,6 +62,7 @@ jobs:
         if EXIST LICENSE.txt (
           copy LICENSE.txt "recipe\\recipe-scripts-license.txt"
         )
+        echo on
         conda.exe mambabuild "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables --extra-meta CI_RUN_ID=%CI_RUN_ID% GIT_URL=%GIT_URL% GIT_SHA1=%GIT_SHA1%
       displayName: Build recipe
       env:
