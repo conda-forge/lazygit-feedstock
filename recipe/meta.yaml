@@ -1,37 +1,42 @@
-{% set name = "lazygit" %}
+{% set goname = "github.com/jesseduffield/lazygit" %}
 {% set version = "0.44.1" %}
-{% set sha256 = "02b67d38e07ae89b0ddd3b4917bd0cfcdfb5e158ed771566d3eb81f97f78cc26" %}
+
+{% set name = goname.split('/')[-1] %}
+{% set pkg_src = ('src/'+goname).replace("/",os.sep) %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: {{ version|replace("-", "_") }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/jesseduffield/lazygit/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  - folder: {{ pkg_src }}
+    url: https://github.com/jesseduffield/lazygit/archive/v{{ version }}.tar.gz
+    sha256: 02b67d38e07ae89b0ddd3b4917bd0cfcdfb5e158ed771566d3eb81f97f78cc26
 
 build:
-  number: 0
-  binary_relocation: false
-  detect_binary_files_with_prefix: false
+  number: 1
+  script:
+    - pushd {{ pkg_src }}
+    - go build -ldflags "-s -w" -v -o $PREFIX/bin/lazygit        # [not win]
+    - go build -ldflags "-s -w" -v -o %LIBRARY_BIN%\lazygit.exe  # [win]
+    - go-licenses save . --save_path ../../../../library_licenses
 
 requirements:
   build:
-    - go
+    - {{ compiler('go') }}
+    - go-licenses
 
 test:
   commands:
-    - test -f $PREFIX/bin/lazygit  # [unix]
-    - lazygit -h || true  # [unix]
-    - if not exist "%LIBRARY_BIN%\\lazygit.exe" exit 1  # [win]
-    - lazygit -h || exit 0  # [win]
+    - lazygit --help
 
 about:
   home: https://github.com/jesseduffield/lazygit
   license: MIT
   license_family: MIT
-  license_file: LICENSE
+  license_file:
+    - {{ pkg_src }}/LICENSE
+    - library_licenses/
   summary: |
     A simple terminal UI for git commands, written in Go with the gocui library.
   doc_url: https://godoc.org/github.com/jesseduffield/lazygit
