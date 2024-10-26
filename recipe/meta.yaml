@@ -20,8 +20,6 @@ build:
     - go build -ldflags "-s -w" -v -o $PREFIX/bin/lazygit        # [not win]
     - go build -ldflags "-s -w" -v -o %LIBRARY_BIN%\lazygit.exe  # [win]
     - go-licenses save . --save_path ../../../../library_licenses
-    # Clear out cache to avoid file not removable warnings
-    - chmod -R u+w $(go env GOPATH) && rm -r $(go env GOPATH)    # [unix]
 
 requirements:
   build:
