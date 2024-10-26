@@ -36,7 +36,9 @@ about:
   home: https://github.com/jesseduffield/lazygit
   license: MIT
   license_family: MIT
-  license_file: LICENSE
+  license_file:
+    - {{ pkg_src }}/LICENSE
+    - library_licenses/
   summary: |
     A simple terminal UI for git commands, written in Go with the gocui library.
   doc_url: https://godoc.org/github.com/jesseduffield/lazygit
