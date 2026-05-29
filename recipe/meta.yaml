@@ -1,5 +1,5 @@
 {% set goname = "github.com/jesseduffield/lazygit" %}
-{% set version = "0.62.0" %}
+{% set version = "0.62.1" %}
 
 {% set name = goname.split('/')[-1] %}
 {% set pkg_src = ('src/'+goname).replace("/",os.sep) %}
@@ -11,7 +11,7 @@ package:
 source:
   - folder: {{ pkg_src }}
     url: https://github.com/jesseduffield/lazygit/archive/v{{ version }}.tar.gz
-    sha256: 15f20b97c98a799998bc2d32a9a68674a7ddee8b73735d6d4758fafc854a00cb
+    sha256: 198602c75c0d971b56088d6d364aaf9b2fd52bcadcb0e6a8548df0ed43e4dac2
 
 build:
   number: 0
